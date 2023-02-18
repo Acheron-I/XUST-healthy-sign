@@ -32,10 +32,9 @@ chrome_options.add_argument('--no-sandbox')  # root用户不加这条会无法�
 # driver = webdriver.Chrome(options=chrome_options)  # 获取浏览器句柄
 
 
-# 1.打开浏览器
-def prepare_browser(uid):
-    driver = webdriver.Chrome(options=chrome_options)  # 获取浏览器句柄
-    try:
+
+        driver = webdriver.Chrome(options=chrome_options)  # 获取浏览器句柄
+
         wait = WebDriverWait(driver, 3)  # 后面可以使用wait对特定元素进行等待
         # 3.访问打卡页面并模拟点击来打卡
         url_login = "https://jkjc.xust.edu.cn/#/pages/index/index?uid=MEFBRDNCRjFBRkVGM0M4Q0VEOTI5QUMwODVGRDU4REY%3D"
