@@ -38,105 +38,20 @@ def prepare_browser(uid):
     try:
         wait = WebDriverWait(driver, 3)  # 后面可以使用wait对特定元素进行等待
         # 3.访问打卡页面并模拟点击来打卡
-        url_login = "http://ehallplatform.xust.edu.cn/default/jkdk/mobile/mobJkdkAdd_test.jsp?uid=" + uid
+        url_login = "https://jkjc.xust.edu.cn/#/pages/index/index?uid=MEFBRDNCRjFBRkVGM0M4Q0VEOTI5QUMwODVGRDU4REY%3D"
         driver.get(url_login)
-
-        time.sleep(5)
-
-        driver.execute_script('$("#ssq").show();')
-        driver.execute_script('$("#xxd").show();')
-        driver.execute_script('$("#hqddlx").val("2");')
-        driver.execute_script('$("#guo").val("中国");')
-        driver.execute_script('''$("#sheng").val('陕西省');''')
-        driver.execute_script('''$("#shi").val('西安市');''')
-        driver.execute_script('''$("#xian").val('临潼区');''')
-        driver.execute_script('''$("#szdd4").val('中国 陕西省 西安市 临潼区');''')
-        driver.execute_script('''$(".szdd4").text('中国 陕西省 西安市 临潼区');''')
-        driver.execute_script('''$("#jingdu").val('108.967363');''')
-        driver.execute_script('''$("#weidu").val('34.231581');''')
-
         time.sleep(3)
-        input = WebDriverWait(driver, 30).until(EC.element_to_be_clickable((By.CSS_SELECTOR, 'input.srk.jiaodian')))
-
-        target = driver.find_elements(By.CSS_SELECTOR, 'input.srk.jiaodian')[1]
-        driver.execute_script("arguments[0].scrollIntoView();", target)
-
+        driver.find_elements(By.XPATH, '/html/body/uni-app/uni-page/uni-page-wrapper/uni-page-body/uni-view/uni-view[2]/uni-view/uni-form/span/uni-view[1]/uni-view/uni-view/uni-view[2]/uni-view/uni-radio-group/uni-label[2]/uni-view[2]')[1].click()
         time.sleep(2)
-        driver.find_elements(By.CSS_SELECTOR, 'input.srk.jiaodian')[1].click()
-
-        driver.switch_to.active_element.send_keys(u'西安科技大学')
-
-        # 今日体温
-        jQuery = r'$("input[name=\'jrtwfw5\']")[0].click()'
-        driver.execute_script(jQuery)
-        radios = driver.find_elements(By.CSS_SELECTOR, 'input[type=radio]')
-        for radio in radios:
-            if radio.get_attribute(u"name") == u"jrsfzx3" and radio.get_attribute(u"value") == u"是":
-                if not radio.is_selected():
-                    radio.click()
-                    print("今日在校：" + radio.get_attribute("value"))
-
-            # if radio.get_attribute(u"name") == u"jrtwfw5" and radio.get_attribute(u"value") == u"正常体温:36～37.2℃":
-            #     if not radio.is_selected():
-            #         radio.click()
-        # 获取提交按钮并点击	jiaodian = driver.find_elements(By.XPATH, '//*[@id="xxd"]/ul/li/input')[0]
-        driver.find_element(By.CSS_SELECTOR, 'span#submit').click()
-
-        dig_confirm = driver.switch_to.alert
-        # 打印对话框的内容
-        print(dig_confirm.text)
-        # 点击“确认”按钮
-        dig_confirm.accept()
-
-        try:
-            driver.find_elements(By.XPATH, "//*[text()='已完成']")
-            driver.quit()
-            print("\t打卡成功")
-            return True, "none"
-        except Exception as e:
-            print(traceback.format_exc())
-            return False, e
-        finally:
-            driver.quit()
-    except Exception as e:
-        print(traceback.format_exc())
-        driver.quit()
-        return False, e
-
-
-def check_in(uid, SERVERPUSHKEY):
-    status, e = prepare_browser(uid)
-    error_info = ""
-    retry_times = 2
-    for i in range(retry_times):
-        if not status:
-            print("重新再次打卡")
-            status, e = prepare_browser(uid)
-    if not status:
-        text = "打卡失败:"
-        print("打卡失败")
-        error_info = str(e)
-    else:
-        text = "打卡成功:"
-
-    if text == "打卡成功:" and SERVERPUSHKEY:
-        driver = webdriver.Chrome(options=chrome_options)  # 获取浏览器句柄
-        url = "https://api2.pushdeer.com/message/push?pushkey=" + SERVERPUSHKEY + "&text=✅今日健康打卡已完成✅"
-        driver.get(url)
-
-    if text == "打卡失败:" and SERVERPUSHKEY:
-        driver = webdriver.Chrome(options=chrome_options)  # 获取浏览器句柄
-        url = "https://api2.pushdeer.com/message/push?pushkey=" + SERVERPUSHKEY + "&text=❌打卡失败❌可能为学校打卡页面崩溃，将在15分钟后再次尝试并提醒，直至成功。如需要请前往Github手动Cancle掉本次Action并手动打卡"
-        driver.get(url)
-        time.sleep(60 * 15)
-        check_in(uid, SERVERPUSHKEY)
-   
+        driver.find_elements(By.XPATH, '/html/body/uni-app/uni-page/uni-page-wrapper/uni-page-body/uni-view/uni-view[2]/uni-view/uni-form/span/uni-view[2]/uni-view/uni-view[1]/uni-view[2]/uni-view/uni-radio-group/uni-label[2]/uni-view[2]')[1].click.()
+        time.sleep(2)
+        driver.find_elements(By.XPATH, '/html/body/uni-app/uni-page/uni-page-wrapper/uni-page-body/uni-view/uni-view[2]/uni-view/uni-form/span/uni-view[3]/uni-view/uni-view[1]/uni-view[2]/uni-view/uni-radio-group/uni-label[2]/uni-view[2]')[1].click.()
+        time.sleep(2)
+        driver.find_elements(By.XPATH, '/html/body/uni-app/uni-page/uni-page-wrapper/uni-page-body/uni-view/uni-view[2]/uni-view/uni-form/span/uni-view[4]/uni-view/uni-view[1]/uni-view[2]/uni-view/uni-radio-group/uni-label[2]/uni-view[2]')[1].click.()
+        time.sleep(2)
+        driver.find_elements(By.XPATH, '/html/body/uni-app/uni-page/uni-page-wrapper/uni-page-body/uni-view/uni-view[2]/uni-view/uni-form/span/uni-view[6]/uni-view/uni-view[1]/uni-view[2]/uni-view/uni-radio-group/uni-label[3]/uni-view[2]')[1].click.()
+        time.sleep(2)
+        driver.find_elements(By.XPATH, '/html/body/uni-app/uni-page/uni-page-wrapper/uni-page-body/uni-view/uni-view[2]/uni-button')[1].click.()
+        time.sleep(2) 
+        print 'url of current page is %s'%(dr.current_url)
         
-
-
-UID = os.environ["UID"]
-SERVERPUSHKEY = None
-if "SERVERPUSHKEY" in os.environ:
-    SERVERPUSHKEY = os.environ["SERVERPUSHKEY"]
-
-check_in(UID, SERVERPUSHKEY)
