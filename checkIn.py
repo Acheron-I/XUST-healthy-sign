@@ -58,5 +58,6 @@ time.sleep(2)
 a6 = driver.find_element(By.XPATH, '/html/body/uni-app/uni-page/uni-page-wrapper/uni-page-body/uni-view/uni-view[2]/uni-button')
 a6.click()
 time.sleep(2) 
-print 'url of current page is %s'%(dr.current_url)
+currentPageUrl = driver.current_url
+print("当前页面的url是：", currentPageUrl)
         
