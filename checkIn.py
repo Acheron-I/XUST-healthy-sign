@@ -33,24 +33,24 @@ chrome_options.add_argument('--no-sandbox')  # root用户不加这条会无法�
 
 
 
-        driver = webdriver.Chrome(options=chrome_options)  # 获取浏览器句柄
+driver = webdriver.Chrome(options=chrome_options)  # 获取浏览器句柄
 
-        wait = WebDriverWait(driver, 3)  # 后面可以使用wait对特定元素进行等待
+wait = WebDriverWait(driver, 3)  # 后面可以使用wait对特定元素进行等待
         # 3.访问打卡页面并模拟点击来打卡
-        url_login = "https://jkjc.xust.edu.cn/#/pages/index/index?uid=MEFBRDNCRjFBRkVGM0M4Q0VEOTI5QUMwODVGRDU4REY%3D"
-        driver.get(url_login)
-        time.sleep(3)
-        driver.find_elements(By.XPATH, '/html/body/uni-app/uni-page/uni-page-wrapper/uni-page-body/uni-view/uni-view[2]/uni-view/uni-form/span/uni-view[1]/uni-view/uni-view/uni-view[2]/uni-view/uni-radio-group/uni-label[2]/uni-view[2]')[1].click()
-        time.sleep(2)
-        driver.find_elements(By.XPATH, '/html/body/uni-app/uni-page/uni-page-wrapper/uni-page-body/uni-view/uni-view[2]/uni-view/uni-form/span/uni-view[2]/uni-view/uni-view[1]/uni-view[2]/uni-view/uni-radio-group/uni-label[2]/uni-view[2]')[1].click.()
-        time.sleep(2)
-        driver.find_elements(By.XPATH, '/html/body/uni-app/uni-page/uni-page-wrapper/uni-page-body/uni-view/uni-view[2]/uni-view/uni-form/span/uni-view[3]/uni-view/uni-view[1]/uni-view[2]/uni-view/uni-radio-group/uni-label[2]/uni-view[2]')[1].click.()
-        time.sleep(2)
-        driver.find_elements(By.XPATH, '/html/body/uni-app/uni-page/uni-page-wrapper/uni-page-body/uni-view/uni-view[2]/uni-view/uni-form/span/uni-view[4]/uni-view/uni-view[1]/uni-view[2]/uni-view/uni-radio-group/uni-label[2]/uni-view[2]')[1].click.()
-        time.sleep(2)
-        driver.find_elements(By.XPATH, '/html/body/uni-app/uni-page/uni-page-wrapper/uni-page-body/uni-view/uni-view[2]/uni-view/uni-form/span/uni-view[6]/uni-view/uni-view[1]/uni-view[2]/uni-view/uni-radio-group/uni-label[3]/uni-view[2]')[1].click.()
-        time.sleep(2)
-        driver.find_elements(By.XPATH, '/html/body/uni-app/uni-page/uni-page-wrapper/uni-page-body/uni-view/uni-view[2]/uni-button')[1].click.()
-        time.sleep(2) 
-        print 'url of current page is %s'%(dr.current_url)
+url_login = "https://jkjc.xust.edu.cn/#/pages/index/index?uid=MEFBRDNCRjFBRkVGM0M4Q0VEOTI5QUMwODVGRDU4REY%3D"
+driver.get(url_login)
+time.sleep(3)
+driver.find_elements(By.XPATH, '/html/body/uni-app/uni-page/uni-page-wrapper/uni-page-body/uni-view/uni-view[2]/uni-view/uni-form/span/uni-view[1]/uni-view/uni-view/uni-view[2]/uni-view/uni-radio-group/uni-label[2]/uni-view[2]')[1].click()
+time.sleep(2)
+driver.find_elements(By.XPATH, '/html/body/uni-app/uni-page/uni-page-wrapper/uni-page-body/uni-view/uni-view[2]/uni-view/uni-form/span/uni-view[2]/uni-view/uni-view[1]/uni-view[2]/uni-view/uni-radio-group/uni-label[2]/uni-view[2]')[1].click.()
+time.sleep(2)
+driver.find_elements(By.XPATH, '/html/body/uni-app/uni-page/uni-page-wrapper/uni-page-body/uni-view/uni-view[2]/uni-view/uni-form/span/uni-view[3]/uni-view/uni-view[1]/uni-view[2]/uni-view/uni-radio-group/uni-label[2]/uni-view[2]')[1].click.()
+time.sleep(2)
+driver.find_elements(By.XPATH, '/html/body/uni-app/uni-page/uni-page-wrapper/uni-page-body/uni-view/uni-view[2]/uni-view/uni-form/span/uni-view[4]/uni-view/uni-view[1]/uni-view[2]/uni-view/uni-radio-group/uni-label[2]/uni-view[2]')[1].click.()
+time.sleep(2)
+driver.find_elements(By.XPATH, '/html/body/uni-app/uni-page/uni-page-wrapper/uni-page-body/uni-view/uni-view[2]/uni-view/uni-form/span/uni-view[6]/uni-view/uni-view[1]/uni-view[2]/uni-view/uni-radio-group/uni-label[3]/uni-view[2]')[1].click.()
+time.sleep(2)
+driver.find_elements(By.XPATH, '/html/body/uni-app/uni-page/uni-page-wrapper/uni-page-body/uni-view/uni-view[2]/uni-button')[1].click.()
+time.sleep(2) 
+print 'url of current page is %s'%(dr.current_url)
         
