@@ -62,6 +62,6 @@ a7 = driver.find_element(By.XPATH, '/html/body/uni-app/uni-page/uni-page-wrapper
 text = a7.text
 currentPageUrl = driver.current_url
 print("当前页面的url是：", currentPageUrl)
-print("打卡信息", text)
+print("打卡信息：", text)
 UID = os.environ["UID"]
 SERVERPUSHKEY = os.environ["SERVERPUSHKEY"]
