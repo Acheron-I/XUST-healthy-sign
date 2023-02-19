@@ -37,7 +37,7 @@ driver = webdriver.Chrome(options=chrome_options)  # 获取浏览器句柄
 
 wait = WebDriverWait(driver, 3)  # 后面可以使用wait对特定元素进行等待
         # 3.访问打卡页面并模拟点击来打卡
-url_login = "UID"
+url_login = "https://jkjc.xust.edu.cn/#/pages/index/index?uid=" + UID
 driver.get(url_login)
 time.sleep(3)
 a1 = driver.find_element(By.XPATH, '/html/body/uni-app/uni-page/uni-page-wrapper/uni-page-body/uni-view/uni-view[2]/uni-view/uni-form/span/uni-view[1]/uni-view/uni-view/uni-view[2]/uni-view/uni-radio-group/uni-label[2]/uni-view[2]')
