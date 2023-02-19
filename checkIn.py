@@ -66,5 +66,11 @@ text = a7.text
 currentPageUrl = driver.current_url
 print("当前页面的url是：", currentPageUrl)
 print("打卡信息：", text)
-UID = os.environ["UID"]
-SERVERPUSHKEY = os.environ["SERVERPUSHKEY"]
+if text == "提交成功" and SERVERPUSHKEY:
+        driver = webdriver.Chrome(options=chrome_options)  # 获取浏览器句柄
+        url = "https://api2.pushdeer.com/message/push?pushkey=" + SERVERPUSHKEY + "&text=✅今日健康打卡已完成✅"
+        driver.get(url)
+
+if text != "提交成功" and SERVERPUSHKEY:
+        driver = webdriver.Chrome(options=chrome_options)  # 获取浏览器句柄
+        url = "https://api2.pushdeer.com/message/push?pushkey=" + SERVERPUSHKEY + "&text=❌打卡失败❌可能为学校打卡页面崩溃，将在15分钟后再次尝试并提醒，直至成功。如需要请前往Github手动Cancle掉本次Action并手动打卡"
